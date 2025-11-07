@@ -35,7 +35,7 @@
             <version>2.15.1</version>
         </dependency>
 
-        <!-- may be testing -->
+        <!-- maybe testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
