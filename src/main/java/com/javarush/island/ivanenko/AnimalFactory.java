@@ -11,8 +11,8 @@ import java.util.Random;
 public class AnimalFactory {
     private static final Random random = new Random();
 
-    public static void populate(World world, int count) {
-        for (int i = 0; i < count; i++) {
+    public static void populate(World world, int numOfAnimals) {
+        for (int i = 0; i < numOfAnimals; i++) {
             int x = random.nextInt(world.getWidth());
             int y = random.nextInt(world.getHeight());
             Cell cell = world.getCell(x, y);
@@ -33,7 +33,7 @@ public class AnimalFactory {
                 case 12: animal = new Buffalo(world, x, y);
                 case 13: animal = new Boar(world, x, y);
                 default: animal = new Caterpillar(world, x, y);
-            };
+            }
             cell.addAnimal(animal);
             new Thread(animal).start();
         }

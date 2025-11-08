@@ -5,6 +5,6 @@ import com.javarush.island.ivanenko.world.World;
 
 public class Rabbit extends Animal {
     public Rabbit(World world, int x, int y) {
-        super(2, 150, 2, 0.45f, world, x, y);
+        super(2, 150, 2, 0.45f);
     }
 }

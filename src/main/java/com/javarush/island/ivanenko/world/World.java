@@ -1,7 +1,11 @@
 package com.javarush.island.ivanenko.world;
 
+import lombok.Getter;
+
 public class World {
+    @Getter
     private final int width;
+    @Getter
     private final int height;
     private final Cell[][] grid;
 
@@ -20,11 +24,8 @@ public class World {
         return grid[x][y];
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
+    public boolean isValidCoordinate(int x, int y) {
+        if (x < width || x >= 0 || y < height || y >= 0) return true;
+        else return false;
     }
 }
