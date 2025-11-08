@@ -13,11 +13,7 @@ public abstract class Animal implements Runnable {
         this.fullFeedAmount = fullFeedAmount;
     }
 
-    //public abstract void makeMove();
+    public abstract void makeMove();
 
-
-    @Override
-    public void run() {
-        System.out.println("я родился");
-    }
+    public abstract void run();
 }
