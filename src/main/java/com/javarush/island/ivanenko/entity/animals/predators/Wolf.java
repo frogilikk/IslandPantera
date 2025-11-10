@@ -1,25 +1,16 @@
 package com.javarush.island.ivanenko.entity.animals.predators;
 
-import com.javarush.island.ivanenko.entity.animals.Animal;
-import com.javarush.island.ivanenko.logics.Move;
-import com.javarush.island.ivanenko.world.World;
+import com.javarush.island.ivanenko.island.Cell;
+import com.javarush.island.ivanenko.island.Island;
 
-public class Wolf extends Animal {
-    private final World world;
-    private final int x;
-    private final int y;
-    private Wolf wolf;
-    private Move move = new Move(wolf);
-
-    public Wolf(World world, int x, int y) {
-        super(50, 30, 3, 8);
-        this.world = world;
-        this.x = x;
-        this.y = y;
+public class Wolf extends Predator {
+    public Wolf(String speciesName, Cell cell) {
+        super(speciesName, cell);
+    this.speed = 3;
     }
 
     @Override
-    public void run() {
-        move.makeMove(world, x, y, movementLimit);
+    public void act(Island island) {
+        move(island);
     }
 }

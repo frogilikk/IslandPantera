@@ -1,14 +1,18 @@
 package com.javarush.island.ivanenko;
 
-import com.javarush.island.ivanenko.world.World;
+import com.javarush.island.ivanenko.entity.animals.predators.Wolf;
+import com.javarush.island.ivanenko.island.Cell;
+import com.javarush.island.ivanenko.island.Island;
 
 public class Main {
-    private static int width = 100;
-    private static int height = 20;
-    private static int numOfAnimals = 10;
-
     public static void main(String[] args) {
-        LaunchWorld launchWorld = new LaunchWorld();
-        launchWorld.launch(width, height, numOfAnimals);
+        Island island = new Island();
+        Cell cell = island.getCell(5, 5);
+        Wolf wolf = new Wolf("Wolf", island.getCell(5, 5));
+        cell.addAnimal(wolf);
+        wolf.act(island);
+        wolf.act(island);
+        wolf.act(island);
+        wolf.act(island);
     }
 }
