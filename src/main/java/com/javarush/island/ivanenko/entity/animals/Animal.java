@@ -1,9 +1,14 @@
 package com.javarush.island.ivanenko.entity.animals;
 
+import com.javarush.island.ivanenko.Main;
 import com.javarush.island.ivanenko.island.Cell;
 import com.javarush.island.ivanenko.island.Island;
 
-public abstract class Animal {
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
+
+public abstract class Animal implements Runnable {
     protected final String speciesName;
     protected int weight;
     protected int maxCountPerCell;
@@ -12,6 +17,7 @@ public abstract class Animal {
     protected int currentSatiety;
     protected boolean alive = true;
     protected Cell cell;
+    protected Island island = Main.island;
 
     protected final long id;
 
@@ -22,9 +28,18 @@ public abstract class Animal {
         cell.addAnimal(this);
     }
 
-    public abstract void act(Island island);
+    public abstract void run();
 
-    abstract public void move(Island island);
+    public void move() {
+        for (int i = 0; i < speed; i++) {
+            Cell[] neighbors = island.getNeighbors(cell);
+            Cell neighbor = chooseRandomNonNull(List.of(neighbors));
+            cell.removeAnimal(this);
+            cell = neighbor;
+            cell.addAnimal(this);
+            System.out.println(this.getSpeciesName() + " на: " + cell.getX() + ", " + cell.getY());
+        }
+    };
     abstract public void eat();
     abstract public void reproduce();
 
@@ -35,4 +50,15 @@ public abstract class Animal {
 
     public boolean isAlive() { return alive; }
     public String getSpeciesName() { return speciesName; }
+
+    public static <T> T chooseRandomNonNull(List<T> list) {
+        Random random = new Random();
+        List<T> nonNull = list.stream()
+                          .filter(Objects::nonNull)
+                          .toList();
+
+        if (nonNull.isEmpty()) return null;
+
+        return nonNull.get(random.nextInt(nonNull.size()));
+    }
 }

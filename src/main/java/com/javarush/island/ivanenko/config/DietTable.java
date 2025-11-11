@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DietTable {
-    private static final Map<String, Map<String, Integer>> table = new ConcurrentHashMap<>();
+    public static final Map<String, Map<String, Integer>> table = new ConcurrentHashMap<>();
 
     static {
         table.put("Wolf", Map.of(

@@ -10,7 +10,8 @@ public class Wolf extends Predator {
     }
 
     @Override
-    public void act(Island island) {
-        move(island);
+    public void run() {
+        eat();
+        move();
     }
 }
