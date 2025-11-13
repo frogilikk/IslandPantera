@@ -63,7 +63,6 @@ public abstract class Animal implements Runnable {
 
         if (age > Config.MAX_AGE) {
             this.die();
-            cell.removeAnimal(this);
             Statistics.eats.add(this.speciesName + " с id: " + id + " умер от старости");
         } else {
             age++;
@@ -72,7 +71,6 @@ public abstract class Animal implements Runnable {
         if (currentSatiety == 0) {
             if (weight <= 0) {
                 this.die();
-                cell.removeAnimal(this);
                 Statistics.eats.add(this.speciesName + " с id: " + id + " умер от голода");
             } else {
                 weight--;
