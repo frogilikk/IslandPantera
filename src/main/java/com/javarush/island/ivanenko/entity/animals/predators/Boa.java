@@ -2,14 +2,14 @@ package com.javarush.island.ivanenko.entity.animals.predators;
 
 import com.javarush.island.ivanenko.island.Cell;
 
-public class Wolf extends Predator {
-    public Wolf(String speciesName, Cell cell, int age, boolean canReproduce) {
+public class Boa extends Predator {
+    public Boa(String speciesName, Cell cell, int age, boolean canReproduce) {
         super(speciesName, cell);
         this.canReproduce = canReproduce;
-        this.weight = 50;
+        this.weight = 15;
         this.maxCountPerCell = 30;
-        this.maxSteps = 3;
-        this.foodNeeded = 8;
+        this.maxSteps = 1;
+        this.foodNeeded = 3;
         this.age = age;
         this.stepsLeft = 3;
     }
